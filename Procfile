@@ -1,2 +1,2 @@
-web: npm run server
+web: gunicorn
 web: npm run client
