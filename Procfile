@@ -1,2 +1,2 @@
-web: gunicorn coins.py
+web: gunicorn app:app
 web: npm run client
