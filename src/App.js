@@ -103,7 +103,10 @@ class App extends Component {
     return (
       <div className="App">
 
-        <h1>GIVE ME YOUR $$, I GIVE YOU COINS</h1>
+        <h1>Tralfamadorian Coin Converter</h1>
+        <h2>Tralfamadore uses base 12 coinage. Enter the amount you want to have below and we will convert it for you.</h2>
+        <p>Apologies for only having 2 currencies, currently. Our developers are working on the patch to add all Earthling currencies, however they are working on fixing tier 1 bugs, currently. So it goes.</p>
+        <p>Conversions may be inexact, as Earthlings use an inferior base-10 system. We will take surcharges as payment for our understanding of the way the universe actually works.</p>
         <h3>Amount entered: ${this.state.amount}</h3>
         <FormControl className={classes.radioGroup}>
           <FormLabel component="legend">Currency</FormLabel>
@@ -131,12 +134,12 @@ class App extends Component {
         </Button>
         {this.state.type === 'US' &&
           <div>
-            <p>Silver Dollars: {this.state.dollarCoins}</p>
-            <p>Half Dollars: {this.state.halfDollarCoins}</p>
-            <p>Quarters: {this.state.quarterCoins}</p>
-            <p>Dimes: {this.state.dimeCoins}</p>
-            <p>Nickels: {this.state.nickelCoins}</p>
-            <p>Pennies: {this.state.pennyCoins}</p>
+            <p>Tralfamadore Silver Dollars: {this.state.dollarCoins}</p>
+            <p>Tralfamadore Half Dollars: {this.state.halfDollarCoins}</p>
+            <p>Tralfamadore Quarters: {this.state.quarterCoins}</p>
+            <p>Tralfamadore Dimes: {this.state.dimeCoins}</p>
+            <p>Tralfamadore Nickels: {this.state.nickelCoins}</p>
+            <p>Tralfamadore Pennies: {this.state.pennyCoins}</p>
           </div>}
         {this.state.type === 'Canada' &&
           <div>

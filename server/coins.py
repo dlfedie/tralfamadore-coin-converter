@@ -70,52 +70,86 @@ def turnToCoins(numberPassedInFromClient, type):
     # print('totalChange: ', totalChange)
 
 
-    # grab those half dollars, otherwise set change to 
-    if totalChange >= 50:
+    # the above was a change conversion project i did. below i'm going to convert it to base 12. or at least attempt..
+    baseTwelveChange = float(floatNumber - intNumber)
+    print('base twelve change/decimal: ', baseTwelveChange)
+    stringOfDecimalFixForBaseTwelve = format(baseTwelveChange, '.2f')
+    print('base twelve change/decimal: ', stringOfDecimalFixForBaseTwelve)
+    # the above gets us the decimal that i'll just multiply by 12 to get our "change". yes, yes, this is a lazy way of converting it, but i currently don't feel like converting the entire thing to base 12
+
+    # so, multiply the decimal by 12 to get our change, then by 10 to bump up a decimal place. so, 120. yes, lazy.
+    decimalFixForBaseTwelve = float(stringOfDecimalFixForBaseTwelve)
+    changeInBaseTwelve = 120 * decimalFixForBaseTwelve
+    print('change in base 12?: ', changeInBaseTwelve)
+
+    # looks good, now just round to nearest whole
+    baseTwelveFix = format(changeInBaseTwelve, '.0f')
+    print('change in base 12 after round?: ', baseTwelveFix)
+
+    # going to just give this to totalChange now
+    totalChange = int(baseTwelveFix)
+
+    # now i'm going to just switch out the numbers below to have base change of 120. so half = 60, etc. i'll comment the previous number
+
+    # grab those half dollars, otherwise set change to remainder
+    # previous check on these was 50. for base 12, let's do 60 (half of 120)
+    if totalChange >= 60:
         halfDollarCoins += 1
         print('half dollars: ', halfDollarCoins)
-        remainingChangeAfterHalf = totalChange - 50
-    elif totalChange < 50:
+        remainingChangeAfterHalf = totalChange - 60
+    elif totalChange < 60:
         remainingChangeAfterHalf = totalChange
         print('half dollars: ', halfDollarCoins)
 
-    if remainingChangeAfterHalf >=25:
+    # previous check here was 25. for base 12, that's 30
+    if remainingChangeAfterHalf >=30:
         quarterCoins += 1
         print('quarters: ', quarterCoins)
-        remainingChangeAfterQuarter = remainingChangeAfterHalf - 25
-    elif remainingChangeAfterHalf < 25:
+        remainingChangeAfterQuarter = remainingChangeAfterHalf - 30
+    elif remainingChangeAfterHalf < 30:
         remainingChangeAfterQuarter = remainingChangeAfterHalf
         print('quarters: ', quarterCoins)
 
-    if remainingChangeAfterQuarter >= 10:
-        if remainingChangeAfterQuarter >=20:
+    
+    # base 10 check is 10 here (dimes). base 12 is a 12
+    if remainingChangeAfterQuarter >= 12:
+        # this check is a double "dime", when you have change of 24+. base 10 value was 20 below here
+        if remainingChangeAfterQuarter >=24:
             dimeCoins += 1
         dimeCoins += 1
         print('dimes: ', dimeCoins)
         # dimes and pennies are our only coins that can be more than 1 in this universe
-        remainingChangeAfterDime = remainingChangeAfterQuarter - (10 * dimeCoins)
-    elif remainingChangeAfterQuarter < 10:
+        remainingChangeAfterDime = remainingChangeAfterQuarter - (12 * dimeCoins)
+    elif remainingChangeAfterQuarter < 12:
         remainingChangeAfterDime = remainingChangeAfterQuarter
         print('dimes: ', dimeCoins)
 
-    if remainingChangeAfterDime >= 5:
+    # base 10 check is nickels on 5. base 12 will be on 6
+    if remainingChangeAfterDime >= 6:
         nickelCoins += 1
         print('nickels: ', nickelCoins)
-        remainingChangeAfterNickel = remainingChangeAfterDime - 5
-    elif remainingChangeAfterDime < 5:
+        remainingChangeAfterNickel = remainingChangeAfterDime - 6
+    elif remainingChangeAfterDime < 6:
         remainingChangeAfterNickel = remainingChangeAfterDime
         print('nickels: ', nickelCoins)
 
     # can have up to 4 pennies, no need to count remaining change since we should be out of coins.. SHOULD. we'll see how my math goes here..
+    # good lord. will tralfamadorians have half-nickels? third-nickels?? good ol' base 12. we'll say they phased them out long ago..
+    # so, base 10 we need to check up to 4 pennies. base 6, since i've decided we don't need half- or third-nickels, we'll check up to 5 pennies.
     if remainingChangeAfterNickel >= 1:
         if remainingChangeAfterNickel >= 2:
             if remainingChangeAfterNickel >= 3:
                 if remainingChangeAfterNickel >= 4:
+                    # these 2 lines are added in base 12
+                    if remainingChangeAfterNickel >= 5:
+                        pennyCoins += 1
                     pennyCoins += 1
                 pennyCoins += 1
             pennyCoins += 1
         pennyCoins += 1
         print('pennies: ', pennyCoins)
+
+    # to make it easier to visualize what i'm doing, i'll send back the converted coins, and display those as well.
 
     # create an object to send back!
     coinTotal = {"numberFromClient": numberPassedInFromClient, "dollarCoins": dollarCoins, "halfDollarCoins": halfDollarCoins, "quarterCoins": quarterCoins, "dimeCoins": dimeCoins, "nickelCoins": nickelCoins, "pennyCoins": pennyCoins, "toonies": toonies}
