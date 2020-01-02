@@ -45,6 +45,7 @@ class App extends Component {
     pennyCoins: 0,
     type: 'US',
     toonies: 0,
+    totalChange: 0,
   }
 
   changeAmount = (event) => {
@@ -89,6 +90,7 @@ class App extends Component {
           nickelCoins: coinBundle.nickelCoins,
           pennyCoins: coinBundle.pennyCoins,
           toonies: coinBundle.toonies,
+          totalChange: coinBundle.totalChange,
         })
 
       }).catch((err) => {
@@ -134,22 +136,24 @@ class App extends Component {
         </Button>
         {this.state.type === 'US' &&
           <div>
+            <p>Amount of change in Tralfamadorian: {this.state.totalChange}</p>
             <p>Tralfamadore Silver Dollars: {this.state.dollarCoins}</p>
-            <p>Tralfamadore Half Dollars: {this.state.halfDollarCoins}</p>
-            <p>Tralfamadore Quarters: {this.state.quarterCoins}</p>
-            <p>Tralfamadore Dimes: {this.state.dimeCoins}</p>
-            <p>Tralfamadore Nickels: {this.state.nickelCoins}</p>
-            <p>Tralfamadore Pennies: {this.state.pennyCoins}</p>
+            <p>Tralfamadore Half Dollars ($.60 US Earthling): {this.state.halfDollarCoins}</p>
+            <p>Tralfamadore Quarters ($.30 US Earthling): {this.state.quarterCoins}</p>
+            <p>Tralfamadore Dimes ($.12 US Earthling): {this.state.dimeCoins}</p>
+            <p>Tralfamadore Nickels ($.06 US Earthling): {this.state.nickelCoins}</p>
+            <p>Tralfamadore Pennies (We used to have half-nickels and third-nickels. Sadly, they were eaten in the War of the Gumball Machines): {this.state.pennyCoins}</p>
           </div>}
         {this.state.type === 'Canada' &&
           <div>
-            <p>Toonies: {this.state.toonies}</p>
-            <p>Loonies: {this.state.dollarCoins}</p>
-            <p>Half Dollars: {this.state.halfDollarCoins}</p>
-            <p>Quarters: {this.state.quarterCoins}</p>
-            <p>Dimes: {this.state.dimeCoins}</p>
-            <p>Nickels: {this.state.nickelCoins}</p>
-            <p>Pennies: {this.state.pennyCoins}</p>
+            <p>Amount of change in Tralfamadorian: {this.state.totalChange}</p>
+            <p>Tralfamadore Toonies (Yes, our western hemisphere northerners are weird, too): {this.state.toonies}</p>
+            <p>Tralfamadore Loonies (Loonie is untranslatable): {this.state.dollarCoins}</p>
+            <p>Tralfamadore Half Dollars ($.60 CAN Earthling): {this.state.halfDollarCoins}</p>
+            <p>Tralfamadore Quarters ($.30 CAN Earthling): {this.state.quarterCoins}</p>
+            <p>Tralfamadore Dimes ($.12 CAN Earthling): {this.state.dimeCoins}</p>
+            <p>Tralfamadore Nickels ($.06 CAN Earthling): {this.state.nickelCoins}</p>
+            <p>Tralfamadore Pennies (We used to have half-nickels and third-nickels. Sadly, they were eaten in the War of the Gumball Machines): {this.state.pennyCoins}</p>
           </div>
         }
 

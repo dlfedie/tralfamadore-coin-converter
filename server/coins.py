@@ -149,10 +149,9 @@ def turnToCoins(numberPassedInFromClient, type):
         pennyCoins += 1
         print('pennies: ', pennyCoins)
 
-    # to make it easier to visualize what i'm doing, i'll send back the converted coins, and display those as well.
-
+    # to make it easier to visualize what i'm doing, i'll send back the converted coins, and display those as well. i'll add the totalChange variable onto the sent object
     # create an object to send back!
-    coinTotal = {"numberFromClient": numberPassedInFromClient, "dollarCoins": dollarCoins, "halfDollarCoins": halfDollarCoins, "quarterCoins": quarterCoins, "dimeCoins": dimeCoins, "nickelCoins": nickelCoins, "pennyCoins": pennyCoins, "toonies": toonies}
+    coinTotal = {"numberFromClient": numberPassedInFromClient, "dollarCoins": dollarCoins, "halfDollarCoins": halfDollarCoins, "quarterCoins": quarterCoins, "dimeCoins": dimeCoins, "nickelCoins": nickelCoins, "pennyCoins": pennyCoins, "toonies": toonies, "totalChange": totalChange}
     return coinTotal
 
 
